@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia ALBA - Modalidades y Cursos</title>
+  <style>
+    /* Paleta igual a la del sitio principal */
+    :root {
+      --azul: #1e3a8a;
+      --celeste: #3b82f6;
+      --blanco: #ffffff;
+      --gris-claro: #f5f5f5;
+      --gris-texto: #444;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--gris-claro);
+      color: var(--gris-texto);
+    }
+
+    header {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    nav {
+      background: var(--celeste);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--azul);
+      margin-bottom: 30px;
+    }
+
+    .modalidad {
+      margin-bottom: 60px;
+    }
+
+    .cursos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .curso {
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .curso:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .curso img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .curso-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .curso-content h3 {
+      margin: 10px 0 5px;
+      color: var(--azul);
+    }
+
+    .curso-content p {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .curso-content a {
+      display: inline-block;
+      background: var(--celeste);
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .curso-content a:hover {
+      background: var(--azul);
+    }
+
+    footer {
+      background: var(--azul);
+      color: var(--blanco);
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Academia ALBA</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#nosotros">Nosotros</a>
+    <a href="cursos.html">Modalidades</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <div class="container">
+    <section class="modalidad" id="virtual">
+      <h2>Modalidad Virtual</h2>
+      <div class="cursos-grid">
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1581093588401-22e7c5f3e1d3?auto=format&fit=crop&w=800&q=60" alt="Diseño de CV">
+          <div class="curso-content">
+            <h3>Diseño de CV Profesional</h3>
+            <p>Aprendé a crear un currículum atractivo y moderno que resalte tus habilidades y experiencia.</p>
+            <a href="#">Más info</a>
+          </div>
+        </div>
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1590608897129-79da98d15971?auto=format&fit=crop&w=800&q=60" alt="Oratoria">
+          <div class="curso-content">
+            <h3>Oratoria y Comunicación</h3>
+            <p>Mejorá tu expresión oral, tu confianza y tu presencia escénica para entrevistas o presentaciones.</p>
+            <a href="#">Más info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="modalidad" id="hibrido">
+      <h2>Modalidad Híbrida</h2>
+      <div class="cursos-grid">
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1587614295999-6cb2a8b3b7b3?auto=format&fit=crop&w=800&q=60" alt="LinkedIn">
+          <div class="curso-content">
+            <h3>Diseño de Perfil LinkedIn</h3>
+            <p>Optimización profesional de tu perfil para destacar en el entorno laboral digital.</p>
+            <a href="#">Más info</a>
+          </div>
+        </div>
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1600891963928-c9c1d736a1e6?auto=format&fit=crop&w=800&q=60" alt="Soft Skills">
+          <div class="curso-content">
+            <h3>Habilidades Blandas</h3>
+            <p>Desarrollá inteligencia emocional, liderazgo y trabajo en equipo para el ámbito laboral.</p>
+            <a href="#">Más info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="modalidad" id="presencial">
+      <h2>Modalidad Presencial</h2>
+      <div class="cursos-grid">
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=60" alt="Hard Skills">
+          <div class="curso-content">
+            <h3>Habilidades Duras</h3>
+            <p>Cursos presenciales para adquirir competencias técnicas y aplicadas en diversos campos.</p>
+            <a href="#">Más info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 Academia ALBA. Todos los derechos reservados.
+  </footer>
+</body>
+</html>

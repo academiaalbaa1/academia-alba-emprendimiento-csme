@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Iniciar Sesión</h1>
+    <form id="loginForm">
+      <label for="usuario">Nombre de usuario</label>
+      <input type="text" id="usuario" required>
+
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" required>
+
+      <div id="error" class="error-msg"></div>
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p class="login-link">¿No tenés cuenta? <a href="registro.html">Registrarse</a></p>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const errorDiv = document.getElementById('error');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const usuario = document.getElementById('usuario').value;
+      const contraseña = document.getElementById('contraseña').value;
+
+      const datosGuardados = localStorage.getItem('usuario_' + usuario);
+
+      if (!datosGuardados) {
+        errorDiv.textContent = '❌ Usuario no encontrado.';
+        return;
+      }
+
+      const datos = JSON.parse(datosGuardados);
+
+      if (datos.contraseña !== contraseña) {
+        errorDiv.textContent = '❌ Contraseña incorrecta.';
+        return;
+      }
+
+      // Guardar usuario activo y redirigir
+      localStorage.setItem('usuario_actual', usuario);
+      window.location.href = 'campus.html';
+    });
+  </script>
+</body>
+</html>

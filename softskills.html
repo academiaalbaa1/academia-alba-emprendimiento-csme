@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso de Habilidades Blandas - Academia ALBA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e5e8eb, #eaecee);
+      color: rgb(0, 0, 0);
+      overflow: hidden;
+      margin: 0;
+    }
+    .horizontal-slider {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      height: 100vh;
+    }
+    .horizontal-slide {
+      flex: 0 0 100vw;
+      scroll-snap-align: start;
+      box-sizing: border-box;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .horizontal-slide h1, .horizontal-slide h2 {
+      margin-bottom: 20px;
+    }
+    .btn-whatsapp {
+      background-color: #25D366;
+      border: none;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebe5b;
+    }
+    .card {
+      background-color: #334155;
+      border: none;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    .nav-buttons {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+    .nav-buttons button {
+      pointer-events: all;
+      background: rgba(0,0,0,0.4);
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      color: white;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+    .nav-buttons button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .feature-list {
+      text-align: left;
+      max-width: 600px;
+    }
+    .feature-list li {
+      margin-bottom: 10px;
+    }
+    .img-promo {
+      max-width: 600px;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      background: rgba(11, 171, 235, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header img { height: 70px; transition: transform 0.3s; }
+    header img:hover { transform: scale(1.05); }
+    nav { display: flex; gap: 20px; }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #0077cc; }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background:rgba(11, 171, 235, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 0.9em;
+      color: #333;
+      z-index: 999;
+    }
+    .social-icons img {
+      height: 24px;
+      margin: 0 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .social-icons img:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="./IMÁGENES/photo_2025-06-17_19-28-53.png" alt="Academia ALBA">
+  <nav>
+    <a href="INDEX ALBA ACTUAL.html">Inicio</a>
+    <a href="INDEX ALBA ACTUAL.html">Nosotros</a>
+    <a href="INDEX ALBA ACTUAL.html">Modalidades</a>
+    <a href="INDEX ALBA ACTUAL.html">Cursos</a>
+    <a href="INDEX ALBA ACTUAL.html">Contacto</a>
+  </nav>
+</header>
+
+<div class="nav-buttons">
+  <button id="prevBtn">❮</button>
+  <button id="nextBtn">❯</button>
+</div>
+<div class="horizontal-slider" id="slider">
+  <section class="horizontal-slide">
+    <h1 class="display-4 text-primary">Curso de Habilidades Blandas</h1>
+    <p class="lead">Desarrollá las competencias interpersonales más valoradas en el mundo laboral moderno.</p>
+    <img src="./IMÁGENES/softskills.png" alt="Habilidades Blandas" class="img-promo">
+    <p class="mt-3">Modalidades: <strong>Presencial</strong>, <strong>Virtual</strong> y <strong>Híbrida</strong>.<br>Clases con <strong>ejercicios vivenciales</strong> y <strong>feedback personalizado</strong>.</p>
+  </section>
+
+  <section class="horizontal-slide">
+    <h2 class="text-primary">Nuestros Profesores</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="./IMÁGENES/profe2.jpg" class="card-img-top" alt="Profesor 1">
+          <div class="card-body">
+            <h5 class="card-title">Carolina Ruiz</h5>
+            <p class="card-text">Psicóloga laboral y formadora en inteligencia emocional aplicada al trabajo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="./IMÁGENES/profe1.jpg" class="card-img-top" alt="Profesor 2">
+          <div class="card-body">
+            <h5 class="card-title">Matías Gómez</h5>
+            <p class="card-text">Coach en liderazgo, comunicación y resolución de conflictos laborales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="horizontal-slide">
+    <h2 class="text-primary">¿Qué aprenderás?</h2>
+    <ul class="feature-list">
+      <li>✅ Comunicación efectiva y asertiva</li>
+      <li>💡 Liderazgo colaborativo y motivacional</li>
+      <li>🧠 Inteligencia emocional y manejo del estrés</li>
+      <li>🤝 Trabajo en equipo y empatía profesional</li>
+      <li>🎯 Adaptabilidad y pensamiento crítico</li>
+    </ul>
+  </section>
+
+  <section class="horizontal-slide">
+    <h2 class="text-primary">Precio y Contacto</h2>
+    <p class="fs-5">💲 Promoción especial: <strong>$26.000</strong><br><small>(Pagá en cuotas sin interés)</small></p>
+    <p>¿Querés fortalecer tus habilidades interpersonales? ¡Hablá con nosotros!</p>
+    <a href="https://wa.me/5491112345678" class="btn btn-whatsapp btn-lg">📱 Consultar por WhatsApp</a>
+  </section>
+</div>
+
+<script>
+  const slider = document.getElementById('slider');
+  const slides = document.querySelectorAll('.horizontal-slide');
+  const btnPrev = document.getElementById('prevBtn');
+  const btnNext = document.getElementById('nextBtn');
+  let currentSlide = 0;
+
+  function scrollToSlide(index) {
+    const offset = slides[index].offsetLeft;
+    slider.scrollTo({ left: offset, behavior: 'smooth' });
+  }
+
+  btnPrev.addEventListener('click', () => {
+    if (currentSlide > 0) {
+      currentSlide--;
+      scrollToSlide(currentSlide);
+    }
+  });
+
+  btnNext.addEventListener('click', () => {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
+      scrollToSlide(currentSlide);
+    }
+  });
+</script>
+
+<footer>
+  <div class="direcccion">📍 Sarmiento 394, Buenos Aires · 📞 (011) 1234-5678</div>
+  <div class="social-icons">
+    <a href="#" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram"></a>
+    <a href="#" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+    <a href="#" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="X"></a>
+    <a href="#" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+  </div>
+</footer>
+
+</body>
+</html>

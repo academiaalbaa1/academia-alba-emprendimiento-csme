@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academia ALBA | Habilidades Duras</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9fb;
+      color: #333;
+    }
+
+    header {
+      background-color: #004d7a;
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+      background-image: url('https://img.freepik.com/free-photo/business-office-building-exterior_1127-3080.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 77, 122, 0.6);
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 2.5em;
+      z-index: 1;
+    }
+
+    main {
+      padding: 60px 10%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #004d7a;
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .course-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .course-card .content {
+      padding: 20px;
+    }
+
+    .course-card h3 {
+      color: #004d7a;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+
+    .course-card p {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .course-card a {
+      display: inline-block;
+      background-color: #007bbf;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .course-card a:hover {
+      background-color: #005b8f;
+    }
+
+    footer {
+      background-color: #004d7a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      h2 { font-size: 1.6em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Academia ALBA | Habilidades Duras</h1>
+  </header>
+
+  <main>
+    <h2>Fortalecé tus Habilidades Técnicas</h2>
+    <div class="courses">
+      <div class="course-card">
+        <img src="https://img.freepik.com/free-photo/developer-coding-laptop_53876-96242.jpg" alt="Excel Profesional">
+        <div class="content">
+          <h3>Excel Profesional</h3>
+          <p>Aprendé a manejar Excel en un nivel avanzado: fórmulas, macros, tablas dinámicas y automatizaciones.</p>
+          <a href="#">Más info</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://img.freepik.com/free-photo/person-coding-computer_53876-16088.jpg" alt="Introducción a la Programación">
+        <div class="content">
+          <h3>Introducción a la Programación</h3>
+          <p>Domina las bases de la lógica y estructura de programación en lenguajes modernos como Python y JavaScript.</p>
+          <a href="#">Más info</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://img.freepik.com/free-photo/businesswoman-analyzing-financial-data_53876-104175.jpg" alt="Análisis de Datos">
+        <div class="content">
+          <h3>Análisis de Datos</h3>
+          <p>Aprendé a recopilar, limpiar e interpretar información con herramientas digitales y visualización de datos.</p>
+          <a href="#">Más info</a>
+        </div>
+      </div>
+      <div class="course-card">
+        <img src="https://img.freepik.com/free-photo/graphic-designer-using-pen-tablet_53876-16138.jpg" alt="Diseño Digital">
+        <div class="content">
+          <h3>Diseño Digital</h3>
+          <p>Desarrollá tus habilidades en diseño visual, manejo de herramientas como Photoshop e Illustrator.</p>
+          <a href="#">Más info</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Academia ALBA — Formación para el Futuro</p>
+  </footer>
+</body>
+</html>

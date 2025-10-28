@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Academia ALBA</title>
+<link href="https://fonts.googleapis.com/css2?family=Danfo&family=Libertinus+Mono&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* Reset y base */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    scroll-behavior: smooth;
+  }
+  html, body {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(135deg, #0ba9eb 0%, #73d5f7 100%);
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+  }
+
+  /* SPLASH */
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: #0077cc; /* Fondo sólido acorde azul */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e0f7fa;
+    font-family: 'Ubuntu', cursive;
+    font-size: 2.4rem;
+    font-weight: 700;
+    z-index: 1500;
+  }
+  #splash img {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 5px rgba(255 255 255 / 0.7));
+  }
+  #splash p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 90px;
+    background: rgba(11, 169, 235, 0.4);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 1000;
+    gap: 15px;
+  }
+  header img {
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  header img:hover {
+    transform: scale(1.1);
+  }
+  nav {
+    flex-grow: 1;
+  }
+  .menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+  .menu li a {
+    color: #e0f7fa;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  .menu li a:hover, .menu li a:focus {
+    background-color: rgba(255 255 255 / 0.3);
+    outline: none;
+  }
+  .eslogan {
+    color: #e0f7fa;
+    font-size: 1rem;
+    font-weight: 400;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  /* SLIDER */
+  .slider-wrapper {
+    position: relative;
+    margin-top: 90px;
+    height: calc(100vh - 90px - 60px);
+    overflow: hidden;
+    flex-grow: 1;
+  }
+  .slider {
+    display: flex;
+    height: 100%;
+    width: 400vw;
+    transition: transform 0.5s ease-in-out;
+    touch-action: pan-y;
+  }
+  .slide {
+    flex: 0 0 100vw;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+  }
+  .slide-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px 25px;
+    max-width: 800px;
+    background: rgba(255 255 255 / 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    animation: fadeIn 1s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  h1, h2 {
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0,0,0,0.3);
+  }
+  p {
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 0 0 6px rgba(0,0,0,0.2);
+  }
+
+  /* Modalidades */
+  .modalidades-botones {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .cta-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255 255 255 / 0.3);
+    border-radius: 12px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #003a5d;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 20px rgba(0, 119, 204, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+  }
+  .cta-button svg {
+    width: 24px;
+    height: 24px;
+    fill: #0077cc;
+    transition: fill 0.3s ease;
+  }
+  .cta-button:hover {
+    background: #0077cc;
+    color: white;
+    box-shadow: 0 12px 24px rgba(0, 119, 204, 0.6);
+  }
+  .cta-button:hover svg {
+    fill: white;
+  }
+  .modalidades-botones p {
+    color: white;
+    font-weight: 500;
+    margin-top: 20px;
+  }
+  .modalidades-botones p a {
+    color: #aee1fb;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* Contacto */
+  #contacto {
+    padding: 80px 20px 100px;
+    background: linear-gradient(to right, #a4d8f0, #d9f0fb);
+    text-align: center;
+    color: #003a5d;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 30px auto 0;
+    background: rgba(255 255 255 / 0.75);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+  .contact-form input, .contact-form textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #003a5d;
+    outline: none;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    box-shadow: 0 0 10px #0077cc;
+  }
+  .contact-form button {
+    background: #0077cc;
+    color: white;
+    padding: 14px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0,119,204,0.6);
+  }
+  .contact-form button:hover {
+    background: #005fa3;
+    box-shadow: 0 8px 22px rgba(0,95,163,0.9);
+  }
+
+  /* FOOTER */
+  footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(11,171,235,0.7);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #003a5d;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 1000;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  }
+  footer div.social-icons {
+    display: flex;
+    gap: 15px;
+  }
+  footer div.social-icons a img {
+    height: 28px;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  footer div.social-icons a img:hover {
+    transform: scale(1.3);
+  }
+
+  /* NAV BUTTONS SLIDER */
+  .nav-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .nav-buttons button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: all;
+    background: rgba(0,0,0,0.35);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+  #prevBtn {
+    left: 10px;
+  }
+  #nextBtn {
+    right: 10px;
+  }
+  .nav-buttons button:hover {
+    background: rgba(0,0,0,0.6);
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .slide-content {
+      max-width: 90vw;
+      padding: 15px 15px;
+    }
+    .cta-button {
+      font-size: 1rem;
+      padding: 10px 15px;
+    }
+    footer {
+      font-size: 0.8rem;
+      flex-direction: column;
+      gap: 6px;
+      height: auto;
+      padding: 8px 10px;
+    }
+    header .eslogan {
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+    .nav-buttons button {
+      font-size: 2rem;
+      padding: 10px 14px;
+    }
+    .menu {
+      gap: 15px;
+    }
+    .menu li a {
+      font-size: 0.9rem;
+      padding: 6px 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash" aria-label="Pantalla de inicio Academia ALBA">
+  <img src="./IMÁGENES/photo_2025-06-17_19-28-53.png" alt="Logo Academia ALBA" />
+  <p>Acompañándote desde el principio</p>
+</div>
+
+<header role="banner">
+  <img src="./IMÁGENES/photo_2025-06-17_19-28-53.png" alt="Logo Academia ALBA" />
+  <nav role="navigation" aria-label="Menú principal">
+    <ul class="menu">
+      <li><a href="#inicio" onclick="goToSlide(0)">Inicio</a></li>
+      <li><a href="#nosotros" onclick="goToSlide(1)">Nosotros</a></li>
+      <li><a href="#modalidades" onclick="goToSlide(2)">Modalidades</a></li>
+      <li><a href="#contacto" onclick="goToSlide(3)">Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="eslogan">Acompañándote desde el principio</div>
+</header>
+
+<div class="slider-wrapper" role="main" aria-live="polite" aria-atomic="true">
+  <div class="slider" id="slider">
+
+    <!-- Slide 1: INICIO -->
+    <section class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80');" id="inicio" tabindex="0" aria-label="Inicio - Bienvenidos a Academia ALBA">
+      <div class="overlay"></div>
+      <div class="slide-content">
+        <h1>Bienvenidos a Academia ALBA</h1>
+        <p>Donde el aprendizaje se convierte en experiencia.</p>
+      </div>
+    </section>
+
+    <!-- Slide 2: NOSOTROS -->
+    <section class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80');" id="nosotros" tabindex="0" aria-label="Nosotros - Quiénes somos">
+      <div class="overlay"></div>
+      <div class="slide-content">
+        <h2>¿Quiénes somos?</h2>
+        <p>Somos una academia comprometida con tu crecimiento personal y profesional.</p>
+      </div>
+    </section>
+
+    <!-- Slide 3: MODALIDADES -->
+    <section class="slide" style="background-image:url('https://images.unsplash.com/photo-1551836022-18a61c9f8e06?auto=format&fit=crop&w=1400&q=80');" id="modalidades" tabindex="0" aria-label="Modalidades de estudio">
+      <div class="overlay"></div>
+      <div class="slide-content">
+        <h2>Modalidades</h2>
+        <div class="modalidades-botones">
+          <a href="presencial.html" class="cta-button" aria-label="Modalidad Presencial - ver cursos">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7l10 5-10 5-10-5 10-5z"/></svg>
+            <span>Presencial</span>
+          </a>
+          <a href="online.html" class="cta-button" aria-label="Modalidad Online - ver cursos">
+            <svg viewBox="0 0 24 24"><path d="M20 6v12H4V6h16zm-8 9l4-4h-3V9h-2v2H8l4 4z"/></svg>
+            <span>Online</span>
+          </a>
+          <a href="mixto.html" class="cta-button" aria-label="Modalidad Mixto - ver cursos">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/></svg>
+            <span>Mixto</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: CONTACTO -->
+    <section class="slide" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80');" id="contacto" tabindex="0" aria-label="Contacto">
+      <div class="overlay"></div>
+      <div class="slide-content">
+        <h2>Contacto</h2>
+        <form class="contact-form" aria-label="Formulario de contacto">
+          <input type="text" placeholder="Nombre" aria-label="Nombre" required />
+          <input type="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required />
+          <textarea rows="4" placeholder="Mensaje" aria-label="Mensaje" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Botones slider manual -->
+  <div class="nav-buttons" aria-label="Controles de slider">
+    <button id="prevBtn" aria-label="Slide anterior" title="Slide anterior">&#10094;</button>
+    <button id="nextBtn" aria-label="Slide siguiente" title="Slide siguiente">&#10095;</
+    <button id="nextBtn" aria-label="Slide siguiente" title="Slide siguiente">&#10095;</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div>© 2025 Academia ALBA</div>
+  <div class="social-icons" aria-label="Redes sociales">
+    <a href="https://facebook.com/academiaalba" target="_blank" rel="noopener" aria-label="Facebook Academia ALBA">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Icono Facebook" />
+    </a>
+    <a href="https://twitter.com/academiaalba" target="_blank" rel="noopener" aria-label="Twitter Academia ALBA">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Icono Twitter" />
+    </a>
+    <a href="https://instagram.com/academiaalba" target="_blank" rel="noopener" aria-label="Instagram Academia ALBA">
+      <img src="https://cdn-icons-png.flaticon.com/512/1409/1409946.png" alt="Icono Instagram" />
+    </a>
+  </div>
+  <div aria-label="Ubicación física">📍 Av. Siempre Viva 742, Ciudad</div>
+</footer>
+
+<script>
+  // Esperar que cargue todo
+  window.addEventListener('load', () => {
+    const splash = document.getElementById('splash');
+    setTimeout(() => {
+      splash.style.opacity = '0';
+      splash.style.pointerEvents = 'none';
+      setTimeout(() => splash.style.display = 'none', 500);
+    }, 2500); // 2.5 segundos splash
+  });
+
+  // Slider funcionalidad
+  const slider = document.getElementById('slider');
+  const totalSlides = slider.children.length;
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  function updateSliderPosition() {
+    slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
+  }
+
+  // Botones prev y next
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    if (isTransitioning) return;
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSliderPosition();
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (isTransitioning) return;
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSliderPosition();
+  });
+
+  // Función para navegar desde el menú
+  function goToSlide(index) {
+    currentIndex = index;
+    updateSliderPosition();
+  }
+  window.goToSlide = goToSlide; // para que sea accesible desde onclick inline
+
+  // Optional: permitir swipe táctil para móviles
+  let startX = 0;
+  let isSwiping = false;
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+  });
+  slider.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+
+    // opcional: para dar feedback puedes implementar un translate parcial
+  });
+  slider.addEventListener('touchend', (e) => {
+    if (!isSwiping) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if (diff > 40) { // swipe right
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSliderPosition();
+    } else if (diff < -40) { // swipe left
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSliderPosition();
+    }
+    isSwiping = false;
+  });
+
+</script>
+
+</body>
+</html>
